@@ -26,7 +26,7 @@ const Header = () => {
         <input
           type="text"
           placeholder="Search order #"
-          className="p-2 px-6 rounded-full bg-zinc-900 border border-zinc-800 text-sm transition-all duration-300 sm:w-64 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder:text-zinc-500"
+          className="p-2 px-6 rounded-full bg-zinc-900 border border-zinc-800 text-sm transition-all duration-300 md:w-64 w-38 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder:text-zinc-500"
           onChange={(e) => setQuery(e.target.value)}
           value={query}
         />

@@ -13,7 +13,7 @@ const Order = () => {
     function () {
       if (!fetcher.data && fetcher.state === "idle") fetcher.load("/menu");
     },
-    [fetcher]
+    [fetcher],
   );
 
   const {
@@ -83,18 +83,23 @@ const Order = () => {
 
       <div className="space-y-3 bg-zinc-900/30 rounded-2xl p-8 border border-zinc-800/50">
         <p className="text-sm font-bold text-zinc-400 uppercase tracking-widest">
-          Price pizza: <span className="text-zinc-100">${orderPrice.toFixed(2)}</span>
+          Price pizza:{" "}
+          <span className="text-zinc-100">${orderPrice.toFixed(2)}</span>
         </p>
         {priority && (
           <p className="text-sm font-bold text-zinc-400 uppercase tracking-widest">
-            Price priority: <span className="text-zinc-100">${priorityPrice.toFixed(2)}</span>
+            Price priority:{" "}
+            <span className="text-zinc-100">${priorityPrice.toFixed(2)}</span>
           </p>
         )}
-        <p className="text-xl font-black text-zinc-100 uppercase tracking-tighter pt-2 border-t border-zinc-800">
-          To pay on delivery: <span className="text-orange-500">${(orderPrice + priorityPrice).toFixed(2)}</span>
+        <p className="text-md font-black text-zinc-100 uppercase tracking-tighter pt-2 border-t border-zinc-800">
+          To pay on delivery:{""}{" "}
+          <span className="text-orange-500">
+            ${(orderPrice + priorityPrice).toFixed(2)}
+          </span>
         </p>
       </div>
-      {!priority && <UpdateOrder order={order}/>}
+      {!priority && <UpdateOrder order={order} />}
     </div>
   );
 };
