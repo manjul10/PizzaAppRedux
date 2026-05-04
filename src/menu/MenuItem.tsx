@@ -29,14 +29,14 @@ const MenuItem = ({ pizza }) => {
         alt={name}
         className={`h-24 rounded-md shadow-md ${soldOut ? "opacity-50 grayscale" : ""}`}
       />
-      <div className="flex grow flex-col pt-0.5">
+      <div className="flex grow flex-col pt-0.5 md:justify-between items-center md:items-stretch gap-1">
         <p className="font-bold text-zinc-100 text-left text-lg">{name}</p>
-        <p className="text-sm capitalize italic text-zinc-400 text-left mt-1">
+        <p className="text-sm capitalize italic text-zinc-400 text-center md:text-left mt-1">
           {ingredients.join(", ")}
         </p>
-        <div className="mt-auto flex items-center justify-between">
+        <div className="mt-auto flex items-center justify-between flex-col md:flex-row">
           {!soldOut ? (
-            <p className="text-base font-semibold text-orange-400">${unitPrice.toFixed(2)}</p>
+            <p className="text-base font-semibold text-orange-400 mr-1 mb-1">${unitPrice.toFixed(2)}</p>
           ) : (
             <p className="text-sm font-bold uppercase text-zinc-500">
               Sold out

@@ -42,10 +42,10 @@ const Cart = () => {
         ))}
       </ul>
 
-      <div className="mt-8 space-x-4 flex items-center">
+      <div className="mt-8 space-x-4 flex items-center text-center">
         <Link
           to="/order/new"
-          className="inline-block rounded-full bg-orange-500 px-6 py-3
+          className="inline-block rounded-full bg-orange-500 px-2 text-sm md:text-lg md:px-6 py-3
       font-bold uppercase tracking-widest text-zinc-950 duration-300
       hover:bg-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-500
       focus:ring-offset-2 focus:ring-offset-zinc-950 shadow-lg shadow-orange-500/20 active:scale-95"
@@ -56,7 +56,7 @@ const Cart = () => {
         <button
           onClick={() => dispatch(clearCart())} // 4. Dispatch clearCart
           className="inline-block rounded-full border border-zinc-700
-      px-6 py-3 font-bold uppercase tracking-widest text-zinc-400 duration-300
+      px-2.5 text-sm md:text-lg md:px-6 py-3 font-bold uppercase tracking-widest text-zinc-400 duration-300
       hover:bg-zinc-800 hover:text-zinc-100 focus:outline-none focus:ring-2
       focus:ring-zinc-700 focus:ring-offset-2 focus:ring-offset-zinc-950 active:scale-95"
         >

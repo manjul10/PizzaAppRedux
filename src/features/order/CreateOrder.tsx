@@ -122,7 +122,7 @@ const CreateOrder = () => {
           </div>
 
           <span
-            className="absolute right-[5px] top-[29px] sm:top-[5px] z-50"
+            className="absolute right-1.25 md:top-7.25 top-8 z-50"
           >
             {!position.latitude && !position.longitude && (
               <button
