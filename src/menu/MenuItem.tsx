@@ -23,22 +23,22 @@ const MenuItem = ({ pizza }) => {
     dispatch(addItem(newItem));
   };
   return (
-    <li className="flex gap-4 py-2">
+    <li className="flex gap-4 py-4 hover:bg-zinc-900/50 transition-colors duration-200 px-2 rounded-lg">
       <img
         src={imageUrl}
         alt={name}
-        className={`h-24 ${soldOut ? "opacity-70 grayscale" : ""}`}
+        className={`h-24 rounded-md shadow-md ${soldOut ? "opacity-50 grayscale" : ""}`}
       />
       <div className="flex grow flex-col pt-0.5">
-        <p className="font-medium text-left">{name}</p>
-        <p className="text-sm capitalize italic text-stone-500 text-left">
+        <p className="font-bold text-zinc-100 text-left text-lg">{name}</p>
+        <p className="text-sm capitalize italic text-zinc-400 text-left mt-1">
           {ingredients.join(", ")}
         </p>
         <div className="mt-auto flex items-center justify-between">
           {!soldOut ? (
-            <p className="text-sm">${unitPrice.toFixed(2)}</p>
+            <p className="text-base font-semibold text-orange-400">${unitPrice.toFixed(2)}</p>
           ) : (
-            <p className="text-sm font-medium uppercase text-stone-500">
+            <p className="text-sm font-bold uppercase text-zinc-500">
               Sold out
             </p>
           )}
@@ -52,10 +52,10 @@ const MenuItem = ({ pizza }) => {
 
           {!soldOut && !isInCart && (
             <button
-              className="inline-block text-sm rounded-full bg-yellow-400
-      font-semibold uppercase tracking-wide text-stone-800 duration-300
-      hover:bg-yellow-300 focus:outline-none focus:ring focus:ring-yellow-300
-      focus:ring-offset-2 disabled:cursor-not-allowed px-4 py-2 md:px-5 md:py-2.5"
+              className="inline-block text-xs md:text-sm rounded-full bg-orange-500
+      font-bold uppercase tracking-widest text-zinc-950 duration-300
+      hover:bg-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-500
+      focus:ring-offset-2 focus:ring-offset-zinc-950 px-4 py-2 md:px-5 md:py-2.5 active:scale-95 shadow-lg shadow-orange-500/10"
               onClick={handleAddToCart}
             >
               Add to cart

@@ -10,22 +10,22 @@ const UpdateItemQuantity = ({ pizzaId }: { pizzaId: number }) => {
   return (
     <div className="flex items-center gap-2 md:gap-3">
       <button
-        className="inline-block text-sm rounded-full bg-yellow-400 font-semibold
-      uppercase tracking-wide text-stone-800 duration-300 hover:bg-yellow-300
-      focus:outline-none focus:ring focus:ring-yellow-300 focus:ring-offset-2
-      disabled:cursor-not-allowed px-2.5 py-1 md:px-3.5 md:py-2"
+        className="inline-block rounded-full bg-zinc-800 font-bold
+      text-zinc-100 duration-300 hover:bg-zinc-700
+      focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-zinc-950
+      disabled:cursor-not-allowed px-2.5 py-1 md:px-3.5 md:py-2 active:scale-90"
         onClick={() => dispatch(decreaseQuantity(pizzaId))}
       >
         -
       </button>
 
-      <span className="text-sm font-medium">{currentQuantity}</span>
+      <span className="text-sm font-bold text-zinc-100">{currentQuantity}</span>
 
       <button
-        className="inline-block text-sm rounded-full bg-yellow-400 font-semibold
-      uppercase tracking-wide text-stone-800 duration-300 hover:bg-yellow-300
-      focus:outline-none focus:ring focus:ring-yellow-300 focus:ring-offset-2
-      disabled:cursor-not-allowed px-2.5 py-1 md:px-3.5 md:py-2"
+        className="inline-block rounded-full bg-zinc-800 font-bold
+      text-zinc-100 duration-300 hover:bg-zinc-700
+      focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-zinc-950
+      disabled:cursor-not-allowed px-2.5 py-1 md:px-3.5 md:py-2 active:scale-90"
         onClick={() => dispatch(increaseQuantity(pizzaId))}
       >
         +

@@ -15,24 +15,31 @@ const Header = () => {
     setQuery("");
   };
   return (
-    <div className="bg-yellow-500 p-3 text-black justify-between flex items-center">
+    <div className="bg-zinc-950 border-b border-zinc-800 p-4 text-zinc-100 justify-between flex items-center shadow-md">
       <Link to="/">
-        <div className="text-2xl font-bold">Pizza App</div>
+        <div className="text-2xl font-bold tracking-tighter text-orange-500 uppercase">
+          Pizza App
+        </div>
       </Link>
 
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Search order #"
-          className="p-1 px-4 rounded-full bg-yellow-100 focus:outline-none
-      focus:ring focus:ring-yellow-600 transition-all duration-300 sm:w-64"
+          className="p-2 px-6 rounded-full bg-zinc-900 border border-zinc-800 text-sm transition-all duration-300 sm:w-64 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder:text-zinc-500"
           onChange={(e) => setQuery(e.target.value)}
           value={query}
         />
       </form>
 
       {/* 4. Display the username from Redux */}
-      <div className="font-semibold hidden md:block">{username}</div>
+      <div className="font-medium hidden md:block text-zinc-400">
+        {username && (
+          <span>
+            Welcome, <span className="text-zinc-100">{username}</span>
+          </span>
+        )}
+      </div>
     </div>
   );
 };

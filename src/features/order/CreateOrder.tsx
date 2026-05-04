@@ -1,4 +1,4 @@
-import type { RootState } from "@reduxjs/toolkit/query";
+import type { RootState } from "../../store";
 import { useDispatch, useSelector } from "react-redux";
 import { Form, useNavigate, useNavigation } from "react-router-dom";
 import type { AppDispatch } from "../../store";
@@ -20,6 +20,7 @@ const CreateOrder = () => {
     status: addressStatus,
     position,
     error: errorAddress,
+    address,
   } = useSelector((state: RootState) => state.user);
 
   const isLoadingAddress = addressStatus === "loading";
@@ -57,76 +58,79 @@ const CreateOrder = () => {
 
       // 4. Navigate to the new order page
       navigate(`/order/${newOrder.id}`);
-    } catch (err) {
+    } catch {
       alert("Failed to create order. Please try again.");
     }
   };
 
   return (
-    <div className="px-4 py-6">
-      <h2 className="mb-8 text-xl font-semibold">Ready to order? Let's go!</h2>
+    <div className="px-4 py-10">
+      <h2 className="mb-10 text-2xl font-bold text-zinc-100 uppercase tracking-tighter">Ready to order? <span className="text-orange-500">Let's go!</span></h2>
 
       <Form onSubmit={onSubmit}>
         <div
-          className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center
+          className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-center
        text-left"
         >
-          <label className="sm:basis-40">First Name</label>
+          <label className="sm:basis-40 font-bold text-zinc-400 uppercase text-xs tracking-widest">First Name</label>
           <input
-            className="input grow border border-stone-200 rounded-full px-4 py-2
-       focus:outline-none focus:ring focus:ring-yellow-400"
+            className="grow bg-zinc-900 border border-zinc-800 rounded-full px-6 py-3 text-zinc-100
+       focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300 placeholder:text-zinc-600"
             type="text"
             name="customer"
             defaultValue={username}
             required
+            placeholder="e.g. John Doe"
           />
         </div>
 
         <div
-          className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center
+          className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-center
        text-left"
         >
-          <label className="sm:basis-40">Phone number</label>
+          <label className="sm:basis-40 font-bold text-zinc-400 uppercase text-xs tracking-widest">Phone number</label>
           <input
-            className="input grow border border-stone-200 rounded-full px-4 py-2
-       focus:outline-none focus:ring focus:ring-yellow-400"
+            className="grow bg-zinc-900 border border-zinc-800 rounded-full px-6 py-3 text-zinc-100
+       focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300 placeholder:text-zinc-600"
             type="tel"
             name="phone"
             required
+            placeholder="e.g. +1 234 567 890"
           />
         </div>
 
         <div
-          className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center
+          className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-center
        text-left relative"
         >
-          <label className="sm:basis-40">Address</label>
+          <label className="sm:basis-40 font-bold text-zinc-400 uppercase text-xs tracking-widest">Address</label>
           <div className="grow">
             <input
-              className="input w-full border border-stone-200 rounded-full px-4
-       py-2 focus:outline-none focus:ring focus:ring-yellow-400"
+              className="w-full bg-zinc-900 border border-zinc-800 rounded-full px-6
+       py-3 text-zinc-100 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300 placeholder:text-zinc-600"
               type="text"
               name="address"
               required
+              defaultValue={address}
+              placeholder="e.g. 123 Street, City"
             />
             {errorAddress && (
-              <p className="mt-2 rounded-md bg-red-100 p-2 text-xs text-red-700">
+              <p className="mt-3 rounded-xl bg-red-950/30 border border-red-900/30 p-3 text-xs font-bold text-red-400">
                 {errorAddress}
               </p>
             )}
           </div>
 
           <span
-            className="absolute right-[3px] top-[3px] z-50 md:right-[5px]
-       md:top-[5px]"
+            className="absolute right-[5px] top-[29px] sm:top-[5px] z-50"
           >
             {!position.latitude && !position.longitude && (
               <button
                 type="button"
                 disabled={isLoadingAddress}
-                className="rounded-full bg-yellow-400 px-3 py-1.5 text-xs
-       font-semibold uppercase tracking-wide text-stone-800 transition-all duration-300
-       hover:bg-yellow-300 disabled:cursor-not-allowed"
+                className="rounded-full bg-zinc-800 px-4 py-2 text-[10px]
+       font-black uppercase tracking-widest text-zinc-100 transition-all duration-300
+       hover:bg-zinc-700 disabled:cursor-not-allowed text-center border border-zinc-700 active:scale-95"
                 onClick={() => dispatch(fetchAddress())} // 5. Dispatch the Async Thunk
               >
                 {isLoadingAddress ? "Locating..." : "Get Position"}
@@ -135,17 +139,17 @@ const CreateOrder = () => {
           </span>
         </div>
 
-        <div className="mb-12 flex items-center gap-5">
+        <div className="mb-12 flex items-center gap-5 bg-zinc-900/30 p-6 rounded-2xl border border-zinc-800/50">
           <input
-            className="h-6 w-6 accent-yellow-400"
+            className="h-6 w-6 accent-orange-500 cursor-pointer"
             type="checkbox"
             name="priority"
             id="priority"
             checked={withPriority}
             onChange={(e) => setWithPriority(e.target.checked)}
           />
-          <label htmlFor="priority" className="font-medium">
-            Want to give your order priority? (+20% price)
+          <label htmlFor="priority" className="font-bold text-zinc-100 cursor-pointer select-none">
+            Want to give your order priority? <span className="text-orange-500">(+20% price)</span>
           </label>
         </div>
 
@@ -153,9 +157,9 @@ const CreateOrder = () => {
           <button
             disabled={isSubmitting || isLoadingAddress}
             type="submit"
-            className="inline-block text-sm rounded-full bg-yellow-400 px-4 py-3
-       font-semibold uppercase tracking-wide text-stone-800 duration-300
-       hover:bg-yellow-300 disabled:cursor-not-allowed"
+            className="w-full sm:w-auto inline-block rounded-full bg-orange-500 px-8 py-4
+       font-black uppercase tracking-widest text-zinc-950 duration-300
+       hover:bg-orange-400 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-zinc-950 shadow-lg shadow-orange-500/20 active:scale-95"
           >
             {isSubmitting
               ? "Placing order..."

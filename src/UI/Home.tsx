@@ -3,15 +3,17 @@ const Home = () => {
   // const username = useSelector((state) => state.user.username)
 
   return (
-    //  <form onSubmit={handleSubmit} className="flex flex-col text-center">
-    <div className="flex flex-col">
-      <h1 className="text-3xl leading-loose font-semibold">The best Pizza.</h1>
-      <h3 className="text-3xl text-yellow-500 mb-6">
-        Straight out of the oven, straight to you.
-      </h3>
+    <div className="my-10 px-4 text-center sm:my-16">
+      <h1 className="mb-8 text-xl font-bold md:text-3xl text-zinc-100 uppercase tracking-widest">
+        The best pizza.
+        <br />
+        <span className="text-orange-500">
+          Straight out of the oven, straight to you.
+        </span>
+      </h1>
+
       <CreateUser />
     </div>
-    // </form>
   );
 };
 

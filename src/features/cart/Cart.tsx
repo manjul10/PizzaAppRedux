@@ -14,52 +14,51 @@ const Cart = () => {
   if (!cart.length)
     return (
       <div className="px-4 py-3">
-        <Link to="/menu" className="text-blue-500 hover:underline">
+        <Link to="/menu" className="text-orange-500 hover:text-orange-400 font-bold transition-colors">
           &larr; Back to menu
         </Link>
-        <p className="mt-7 font-semibold">
+        <p className="mt-7 font-bold text-zinc-100 text-lg">
           Your cart is still empty. Start adding some pizzas! 🍕
         </p>
       </div>
     );
 
   return (
-    <div className="px-4 py-3">
+    <div className="px-4 py-6">
       <Link
         to="/menu"
-        className="text-sm text-blue-500 hover:text-blue-600
-      hover:underline"
+        className="text-sm text-zinc-400 hover:text-orange-500 font-bold transition-colors uppercase tracking-widest"
       >
         &larr; Back to menu
       </Link>
 
-      <h2 className="mt-7 text-xl font-semibold">
-        Your cart, {username || "Guest"}
+      <h2 className="mt-7 text-2xl font-bold text-zinc-100 uppercase tracking-tighter">
+        Your cart, <span className="text-orange-500">{username || "Guest"}</span>
       </h2>
 
-      <ul className="mt-3 divide-y divide-stone-200 border-b">
+      <ul className="mt-6 divide-y divide-zinc-800 border-b border-zinc-800">
         {cart.map((item) => (
           <CartItem item={item} key={item.id} />
         ))}
       </ul>
 
-      <div className="mt-6 space-x-2">
+      <div className="mt-8 space-x-4 flex items-center">
         <Link
           to="/order/new"
-          className="inline-block text-sm rounded-full bg-yellow-400 px-4 py-3
-      font-semibold uppercase tracking-wide text-stone-800 duration-300
-      hover:bg-yellow-300 focus:outline-none focus:ring focus:ring-yellow-300
-      focus:ring-offset-2"
+          className="inline-block rounded-full bg-orange-500 px-6 py-3
+      font-bold uppercase tracking-widest text-zinc-950 duration-300
+      hover:bg-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-500
+      focus:ring-offset-2 focus:ring-offset-zinc-950 shadow-lg shadow-orange-500/20 active:scale-95"
         >
           Order pizzas
         </Link>
 
         <button
           onClick={() => dispatch(clearCart())} // 4. Dispatch clearCart
-          className="inline-block text-sm rounded-full border-2 border-stone-300
-      px-4 py-2.5 font-semibold uppercase tracking-wide text-stone-400 duration-300
-      hover:bg-stone-300 hover:text-stone-800 focus:outline-none focus:ring
-      focus:ring-stone-200 focus:ring-offset-2"
+          className="inline-block rounded-full border border-zinc-700
+      px-6 py-3 font-bold uppercase tracking-widest text-zinc-400 duration-300
+      hover:bg-zinc-800 hover:text-zinc-100 focus:outline-none focus:ring-2
+      focus:ring-zinc-700 focus:ring-offset-2 focus:ring-offset-zinc-950 active:scale-95"
         >
           Clear cart
         </button>

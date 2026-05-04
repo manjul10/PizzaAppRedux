@@ -19,7 +19,7 @@ const CreateUser = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <p className="mb-4 text-sm text-stone-600 md:text-base">
+      <p className="mb-4 text-sm text-zinc-400 md:text-base">
         👋 Welcome! Please start by telling us your name:
       </p>
 
@@ -28,12 +28,12 @@ const CreateUser = () => {
         placeholder="Your full name"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
-        className="input mb-8 w-72"
+        className="mb-8 w-72 p-2 px-6 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-100 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder:text-zinc-500"
       />
 
       {username !== "" && (
         <div>
-          <button className="bg-yellow-400 px-4 py-2 rounded-full font-bold uppercase tracking-wide text-stone-800 transition-colors hover:bg-yellow-300">
+          <button className="inline-block rounded-full bg-orange-500 px-6 py-3 font-bold uppercase tracking-widest text-zinc-950 transition-all duration-300 hover:bg-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-zinc-950 active:scale-95 shadow-lg shadow-orange-500/20">
             Start ordering
           </button>
         </div>
